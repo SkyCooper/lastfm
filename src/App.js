@@ -1,9 +1,14 @@
+import { Provider } from 'react-redux';
 import './App.css';
+import Router from './router/Router';
 
 function App() {
   return (
     <div className="App">
-    <h1>Ready</h1>
+      <Provider>
+        
+      </Provider>
+    <Router/>
     </div>
   );
 }
