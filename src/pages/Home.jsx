@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect } from "react";
 import ArtistCard from "../components/Cards/ArtistCard";
+import axios from "axios";
 
 const Home = () => {
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -14,6 +14,7 @@ const Home = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getTopArtist();
   }, []);
