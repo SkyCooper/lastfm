@@ -1,17 +1,15 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
 
-const ArtistCard = ({ image, name, listeners, playcount }) => {
-  const navigate = useNavigate()
+const TopAlbum = ({ name, listeners, playcount, image, url }) => {
   return (
     <div className="flex justify-center my-4">
       <div
-        onClick={() => navigate("details/" + name)}
+        // onClick={() => navigate("details/" + name)}
         className="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
       >
         <img
           className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-          src={image?.[0]["#text"]}
+          src={image?.[2]["#text"]}
           alt=""
         />
         <div className="flex flex-col justify-between p-4 leading-normal">
@@ -35,4 +33,4 @@ const ArtistCard = ({ image, name, listeners, playcount }) => {
   );
 };
 
-export default ArtistCard;
+export default TopAlbum
