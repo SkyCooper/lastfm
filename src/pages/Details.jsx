@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import TopAlbum from "../components/TopAlbum";
 import TopTrack from "../components/TopTrack";
 
 const Details = () => {
   const { name } = useParams();
+  const { state: image } = useLocation();
   const [topAlbumList, setTopAlbumList] = useState([]);
   const [topTrackList, setTopTrackList] = useState([]);
 
@@ -33,14 +34,35 @@ const Details = () => {
   console.log(topTrackList);
 
   return (
-    <div>
-      {topAlbumList["topalbums"]?.album.map((album, index) => {
-        return <TopAlbum key={index} {...album} />;
-      })}
-      {topTrackList["toptracks"]?.track.map((track, index) => {
-        return <TopTrack key={index} {...track} />;
-      })}
-
+    <div className="flex-col">
+      <div className="flex justify-center">
+        <img
+          className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+          src={image?.[2]["#text"]}
+          alt={name}
+        />
+        <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {name}
+        </h3>
+      </div>
+      <div className="flex justify-center">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Top Albums
+          </h2>
+          {topAlbumList["topalbums"]?.album.map((album, index) => {
+            return <TopAlbum key={index} {...album} />;
+          })}
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Top Tracks
+          </h2>
+          {topTrackList["toptracks"]?.track.map((track, index) => {
+            return <TopTrack key={index} {...track} />;
+          })}
+        </div>
+      </div>
     </div>
   );
 };

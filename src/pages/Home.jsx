@@ -28,8 +28,10 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Artist List</h1>
-      {artist?.map((item,index) => (
+      <h1 className="text-2xl text-center font-bold text-gray-900 dark:text-white">
+        Artist List
+      </h1>
+      {artist?.map((item, index) => (
         <ArtistCard key={index} {...item} />
       ))}
     </div>
